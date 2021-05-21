@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('/createUser', [Controllers\UserController::class, 'create'] )->name('createUser');
+//Route::get('/createUser', [Controllers\UserController::class, 'create'] )->name('createUser');
 
 Route::get('/listaAlbaranes', [Controllers\AlbaranesController::class, 'index'])->name('listaAlbaranes');
 
@@ -27,7 +27,7 @@ Route::get('/editAlbaran', [Controllers\AlbaranesController::class, 'edit'] )->n
 
 Route::get('/añadirMaquina', [Controllers\MaquinasController::class, 'create'])->name('añadirMaquina');;
 
-Route::get('/createIncidencia', [Controllers\IncidenciasController::class, 'create'])->name('createIncidencia');;
+Route::get('/createIncidencia', [Controllers\IncidenciasController::class, 'create'])->name('createIncidencia');
 
 
 Auth::routes();

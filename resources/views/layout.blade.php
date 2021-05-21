@@ -56,7 +56,7 @@
                     {{--
                     <li class="{{activeMenu('mensajes/create')}}" >
                         <a href="{{ route('mensajes.create') }}">Contactos</a>
-                    </li>--}}
+                    </li>
                     @if(auth()->check())
                         <li class="{{activeMenu('mensajes')}}"><a href="{{ route('mensajes.index') }}">Mensajes</a>
                         </li>
@@ -65,11 +65,12 @@
                             <li class="{{activeMenu('usuarios*')}}"><a href="{{ route('usuarios.index') }}">Usuarios</a>
                             </li>
                         @endif
-                    @endif
+                    @endif--}}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> @if(auth()->check())
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                            @if(auth()->check())
                                 {{auth()->user()->name}}
                             @else
                                 Invitado
@@ -80,18 +81,20 @@
                                 <li class="{{activeMenu('login')}}">
                                     <a href="{{ route('login') }}">Iniciar sesión</a>
                                 </li>
-                                <li class="{{activeMenu('createUser')}}">
-                                    <a href="{{ route('createUser')  }}">Crear usuario</a>
+                                <li class="{{activeMenu('register')}}">
+                                    <a href="{{ route('register')  }}">Crear usuario</a>
                                 </li>
                             @else
                                 <li>
-                                    <a href="/logout">Cerrar sesion</a>
-                                </li>
-                                <li>
-                                    <a href="/usuarios/{{ auth()->id() }}/edit">Mi cuenta</a>
+                                    {{--<a href="/logout" action="{{route("logout")}}" method="POST">Cerrar sesion</a>--}} 
+                                    <form action="{{route("logout")}}" method="POST" style = "text-align: center;">                                                                         
+                                        <input type="submit" value="Logout" class="btn btn-primary">
+                                        @csrf
+                                    </form>
                                 </li>
                             @endif
                         </ul>
+                       
                     </li>
                 </ul>
             </div>

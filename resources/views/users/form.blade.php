@@ -17,10 +17,12 @@
     </label>
 </p>
 
-<p><label for="email">Tipo de trabajador
-        <input class="form-control" type="text" name="typeWorker" value="{{$user->typeWorker ?? old('typeWorker')}}">
-        {!! $errors->first('typeWorker','<span class=error>:message</span>')!!}
-    </label>
+<p>
+    <label for="tipoTrabajador">Tipo de trabajador</label><br>
+    <select name="tipoTrabajador" id="tipoTrabajador" class="" name="tipoTrabajador">
+        <option value="leve">Administrador</option>
+        <option value="leve">Empleado</option>
+    </select>
 </p>
 {{--@unless($user->id)--}}
     <p>
