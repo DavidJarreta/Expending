@@ -15,7 +15,9 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
             integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous">
+    </script>
+    
 
 </head>
 <body>
@@ -31,7 +33,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="">Toggle navigation</span>
+                    <span class=""></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -40,32 +42,27 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
+                    
                     <li class="{{activeMenu('login')}}">
                         <a href="{{ route('login') }}">Inicio</a>
                     </li>
-                    {{--<li class="{{activeMenu('createUser')}}">
-
-                    </li>--}}
-                    <li class="{{activeMenu('listaAlbaranes')}}">
-                        <a href="{{ route('listaAlbaranes') }}">Albaranes de máquinas</a>
-                    </li>
-
-                    <li a class="{{activeMenu('createIncidencia')}}">
-                        <a href="{{route('createIncidencia')}}">Incidencias</a>
-                    </li>
-                    {{--
-                    <li class="{{activeMenu('mensajes/create')}}" >
-                        <a href="{{ route('mensajes.create') }}">Contactos</a>
-                    </li>
                     @if(auth()->check())
-                        <li class="{{activeMenu('mensajes')}}"><a href="{{ route('mensajes.index') }}">Mensajes</a>
-                        </li>
-                        @if(auth()->user()->hasRoles(['admin']))
+                    <li class="{{activeMenu('listaAlbaranes')}}">
+                        <a href="{{ route('listaAlbaranes') }}">Albaranes</a>
+                    </li>
 
-                            <li class="{{activeMenu('usuarios*')}}"><a href="{{ route('usuarios.index') }}">Usuarios</a>
-                            </li>
-                        @endif
-                    @endif--}}
+                    <li a class="{{activeMenu('formularioCreateIncidencia')}}">
+                        <a href="{{route('formularioCreateIncidencia')}}">Incidencias</a>
+                    </li>
+                    @if(Auth::user()->type_worker === "admin")
+                        <li a class="{{activeMenu('formularioAñadir')}}">
+                            <a href="{{route('formularioAñadir')}}">Añadir máquina</a>
+                        </li>
+                        <li a class="{{activeMenu('formularioAñadirAlimento')}}">
+                            <a href="{{route('formularioAñadirAlimento')}}">Crear alimento</a>
+                        </li>                      
+                    @endif
+                    @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -103,7 +100,9 @@
 </header>
 <div class="container">
     @yield('contenido')
-    <footer>Copyright {{date('Y')}}</footer>
+    <footer class = "footer fixed-bottom container justify-content-center text-center">
+        <p class="text-center">Proyecto Final DAW. Hecho por David Jarreta Baita. &copy; {{date('Y')}}</p>
+    </footer>
 </div>
 <script src="/js/app.js"></script>
 

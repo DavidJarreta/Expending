@@ -4,8 +4,8 @@
 
 @section('contenido')
     <h1>Lista de albaranes</h1>
-    <a class="btn btn-primary pull-right" href="{{route('añadirMaquina')}}">Añadir máquina</a>
-
+        
+        <a class="btn btn-primary pull-right" href="{{route('formularioCreateAlbaran')}}">Crear albaran</a>
     <table class="table">
         <thead>
         <tr>
@@ -16,8 +16,12 @@
             <th>Contador</th>
         </tr>
         </thead>
-        <tbody>{{--
-        @foreach($messages as $message)
+        <tbody>
+            {{--@foreach ($albaranes as $albaran)
+                <tr> {{$albaran->id}} </tr>
+            @endforeach--}}
+            
+        {{--@foreach($messages as $message)
             <tr>
                 <td>{{ $message->id }}</td>
                 @if($message->user_id)
@@ -38,14 +42,20 @@
                 <td>{{ $message->tags->pluck('names')->implode(', ') }}</td>--}}
 
                 <td>
+                    <form  style="display:inline"  method="POST" action=" {{--{{route('mensajes.destroy',$message->id)--}}}}">
+                        {!! csrf_field()!!}
+                        <button class ="btn btn-info btn-xs"type="submit">Añadir alimento</button>
+                    </form>
+                    @if(Auth::check() && Auth::user()->type_worker === "admin")
                     <a class="btn btn-info btn-xs" href="{{route('editAlbaran')}}{{-- {{route('mensajes.edit',$message->id) --}}">Editar</a>
 
                     <form  style="display:inline"  method="POST" action=" {{--{{route('mensajes.destroy',$message->id)--}}}}">
                         {!! csrf_field()!!}
                         {!! method_field('DELETE')!!}
                         <button class ="btn btn-danger btn-xs"type="submit">Eliminar</button>
-
                     </form>
+                    @endif
+
                 </td>{{--
             </tr>
         @endforeach--}}

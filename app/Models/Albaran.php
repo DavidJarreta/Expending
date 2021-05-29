@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Albaran extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'Estado_maquina',
+        'Fecha',
+        'Dinero_recaudado',
+        'Contador',
+        'Id_usuario',
+        'Id_maquina'
+    ];
+
+    
+    protected $hidden = [
+        'remember_token'
+    ];
+
+    protected $table = 'albaranes';
+
+
 }

@@ -3,10 +3,9 @@
 @section('title', 'Añadir máquina')
 
 @section('contenido')
-    <h1>Añadir máquina</h1>
-    <form method="post" action="{{--{{ route('usuarios.store')}}--}}">
+    <form method="post" action="{{ route('añadirMaquina')}}"> 
 
-        @include('maquinas.form'/*, ['user' => new App\User]*/)
+        @include('maquinas.form')
         <input class="btn btn-primary" type="submit" value="Guardar máquina">
         <input class="btn btn-primary" type="submit" value="Volver">
     </form>

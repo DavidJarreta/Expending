@@ -3,9 +3,9 @@
 @section('title', 'Crear incidencia')
 
 @section('contenido')
-    <form method="post" action="{{--{{ route('usuarios.store')}}--}}">
+    <form method="post" action="{{ route('createIncidencia') }}">
 
-        @include('incidencias.form'/*, ['user' => new App\User]*/)
+        @include('incidencias.form')
         <input class="btn btn-primary" type="submit" value="Guardar incidencia">
         <input class="btn btn-primary" type="submit" value="Volver">
     </form>

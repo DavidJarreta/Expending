@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Albaran;
+use App\Models\Maquina;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AlbaranesController extends Controller
@@ -11,9 +14,12 @@ class AlbaranesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        //$albaranes = Albaran::all();
+
         return view('albaranes.index');
+
     }
 
     /**
@@ -21,9 +27,11 @@ class AlbaranesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('albaranes.create');
+        $maquinas = Maquina::all();
+        $users = User::all();
+        return view('albaranes.create', ['maquinas' => $maquinas , 'users' => $users]);
     }
 
     /**
@@ -34,7 +42,19 @@ class AlbaranesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'Id_maquina' => 'required',
+            'Id_usuario' => 'required',
+            'Estado_maquina' => 'required',
+            'Fecha' => 'required',
+            'Dinero_recaudado' => 'required',
+            'Contador' => 'required',
+        ]);
+
+        Albaran::create($request->all());
+
+        return redirect()->back();
+       
     }
 
     /**

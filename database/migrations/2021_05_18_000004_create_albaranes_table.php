@@ -19,8 +19,8 @@ class CreateAlbaranesTable extends Migration
             $table->date('Fecha');
             $table->double('Dinero_recaudado');
             $table->integer('Contador');
-            $table->bigInteger('Id_usario')->unsigned();
-            $table->foreign('Id_usario')->references('id')->on('users');
+            $table->bigInteger('Id_usuario')->unsigned();
+            $table->foreign('Id_usuario')->references('id')->on('users');
             $table->biginteger('Id_maquina')->unsigned();
             $table->foreign('Id_maquina')->references('Id_maquina')->on('maquinas');
             $table->timestamps();
@@ -34,6 +34,6 @@ class CreateAlbaranesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('albarans');
+        Schema::dropIfExists('albaranes');
     }
 }

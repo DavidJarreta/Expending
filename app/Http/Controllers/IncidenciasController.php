@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Maquina;
+use App\Models\Incidencia;
 
 class IncidenciasController extends Controller
 {
@@ -21,9 +23,11 @@ class IncidenciasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('incidencias.create');
+        
+        $maquinas = Maquina::all();
+        return view('incidencias.create',['maquinas' => $maquinas]);
     }
 
     /**
@@ -34,7 +38,16 @@ class IncidenciasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'Id_maquina' => 'required',
+            'Fecha_incidencia' => 'required',
+            'Descripcion' => 'required',
+            'Gravedad' => 'required'
+        ]);
+
+        Incidencia::create($request->all());
+
+        return redirect()->back();
     }
 
     /**

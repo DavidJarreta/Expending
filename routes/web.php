@@ -21,13 +21,25 @@ Route::get('/', function () {
 
 Route::get('/listaAlbaranes', [Controllers\AlbaranesController::class, 'index'])->name('listaAlbaranes');
 
-Route::get('/createAlbaran', [Controllers\AlbaranesController::class, 'create'] )->name('createAlbaran');;
+Route::get('/formularioCreateAlbaran', [Controllers\AlbaranesController::class, 'create'] )->name('formularioCreateAlbaran');
 
-Route::get('/editAlbaran', [Controllers\AlbaranesController::class, 'edit'] )->name('editAlbaran');;
+Route::post('/createAlbaran', [Controllers\AlbaranesController::class, 'store'] )->name('createAlbaran');
 
-Route::get('/añadirMaquina', [Controllers\MaquinasController::class, 'create'])->name('añadirMaquina');;
+Route::get('/editAlbaran', [Controllers\AlbaranesController::class, 'edit'] )->name('editAlbaran');
 
-Route::get('/createIncidencia', [Controllers\IncidenciasController::class, 'create'])->name('createIncidencia');
+Route::get('/formularioAñadir', [Controllers\MaquinasController::class, 'create'] )->name('formularioAñadir');
+
+Route::post('/añadirMaquina', [Controllers\MaquinasController::class, 'store'])->name('añadirMaquina');
+
+Route::get('/formularioAñadirAlimento', [Controllers\AlimentosController::class, 'create'] )->name('formularioAñadirAlimento');
+
+Route::post('/añadirAlimento', [Controllers\AlimentosController::class, 'store'])->name('añadirAlimento');
+
+
+
+Route::get('/formularioCreateIncidencia', [Controllers\IncidenciasController::class, 'create'])->name('formularioCreateIncidencia');
+
+Route::post('/createIncidencia', [Controllers\IncidenciasController::class, 'store'])->name('createIncidencia');
 
 
 Auth::routes();

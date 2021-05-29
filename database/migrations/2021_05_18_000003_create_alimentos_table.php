@@ -16,6 +16,7 @@ class CreateAlimentosTable extends Migration
         Schema::create('alimentos', function (Blueprint $table) {
             $table->bigIncrements('Id_alimento');
             $table->string('Nombre');
+            $table->double('Precio');
             $table->timestamps();
         });
     }

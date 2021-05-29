@@ -1,46 +1,70 @@
 {!! csrf_field()!!}
-<p>
-    <label for="id">Id de la máquina
-        <input class="form-control" type="text" name="id" value="{{$user->id ?? old('id')}}">
-        {!! $errors->first('id','<span class=error>:message</span>')!!}
-    </label>
-</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header"><h1>{{ __('Datos albarán') }}</h1></div><br>
 
-<p>
-    <label for="addedFood">Alimentos introducidos
-        <input class="form-control" type="text" name="addedFood" value="{{$user->addedFood ?? old('addedFood')}}">
-        {!! $errors->first('addedFood','<span class=error>:message</span>')!!}
-    </label>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="Id_maquina" class="col-md-4 col-form-label text-md-right">{{ __('Id de la máquina') }}</label>
+                        <div class="col-md-6">
+                            <select name="Id_maquina" id="Id_maquina" class="form-control @error('Id_maquina') is-invalid @enderror">
+                                @foreach ($maquinas as $maquina)
+                                    <option name = "Id_maquina" value="{{$maquina->Id_maquina}}">{{$maquina->Id_maquina}}-{{$maquina->Ubicacion}}</option>    
+                                @endforeach                     
+                            </select>    
+                        </div>
+                    </div>
 
-    <label for="amountAddedFood">Cantidad
-        <input class="form-control" type="number" name="amountAddedFood" value="{{$user->amountAddedFood ?? old('amountAddedFood')}}">
-        {!! $errors->first('amountAddedFood','<span class=error>:message</span>')!!}
-    </label>
-</p>
+                    <div class="form-group row">
+                        <label for="Id_usuario" class="col-md-4 col-form-label text-md-right">{{ __('Id del usuario') }}</label>
+                        <div class="col-md-6">
+                            <select name="Id_usuario" id="Id_usuario" class="form-control @error('Id_usuario') is-invalid @enderror">
+                                @foreach ($users as $user)
+                                    <option name = "Id_usuario" value="{{$user->id}}">{{$user->id}}-{{$user->name}}</option>    
+                                @endforeach                         
+                            </select>    
+                        </div>
+                    </div>
 
-<p>
-    <label for="foodWithdrawn">Alimentos retirados
-        <input class="form-control" type="text" name="foodWithdrawn" value="{{$user->foodWithdrawn ?? old('foodWithdrawn')}}">
-        {!! $errors->first('foodWithdrawn','<span class=error>:message</span>')!!}
-    </label>
+                    <div class="form-group row">
+                        <label for="Estado_maquina" class="col-md-4 col-form-label text-md-right">{{ __('Estado de la maquina') }}</label>
 
-    <label for="amountFoodWithdrawn">Cantidad
-        <input class="form-control" type="number" name="amountFoodWithdrawn" value="{{$user->amountFoodWithdrawn ?? old('amountFoodWithdrawn')}}">
-        {!! $errors->first('amountFoodWithdrawn','<span class=error>:message</span>')!!}
-    </label>
-</p>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" name="Estado_maquina" value="">
+                        </div>
+                    </div>
 
-<p>
-    <label for="money">Cantidad de dinero
-        <input class="form-control" type="number" name="money" value="{{$user->money ?? old('money')}}">
-        {!! $errors->first('money','<span class=error>:message</span>')!!}
-    </label>
-</p>
-{{--@unless($user->id)--}}
-<p>
-    <label for="accountant">Contador
-        <input class="form-control" type="number" name="accountant" value="{{$user->accountant ?? old('accountant')}}">
-        {!! $errors->first('accountant','<span class=error>:message</span>')!!}
-    </label>
-</p>
-{{--@endunless--}}
+                    <div class="form-group row">
+                        <label for="Fecha" class="col-md-4 col-form-label text-md-right">{{ __('Fecha') }}</label>
+
+                        <div class="col-md-6">
+                            <input class="form-control" type="date" name="Fecha" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="Dinero_recaudado" class="col-md-4 col-form-label text-md-right">{{ __('Cantidad de dinero') }}</label>
+
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" name="Dinero_recaudado" value="">
+                           
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="Contador" class="col-md-4 col-form-label text-md-right">{{ __('Contador') }}</label>
+
+                        <div class="col-md-6">
+                            <input class="form-control" type="number" name="Contador" value="">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Maquina;
 
 class MaquinasController extends Controller
 {
@@ -23,7 +24,7 @@ class MaquinasController extends Controller
      */
     public function create()
     {
-        return view('maquinas.add');
+       return view('maquinas.add');
     }
 
     /**
@@ -34,8 +35,18 @@ class MaquinasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'ubicacion' => 'required'
+        ]);
+
+        Maquina::create($request->all());
+
+        return redirect()->back();
+            
+            
     }
+       
+    
 
     /**
      * Display the specified resource.
@@ -81,4 +92,5 @@ class MaquinasController extends Controller
     {
         //
     }
+
 }
