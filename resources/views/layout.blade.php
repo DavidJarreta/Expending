@@ -47,21 +47,21 @@
                         <a href="{{ route('login') }}">Inicio</a>
                     </li>
                     @if(auth()->check())
-                    <li class="{{activeMenu('listaAlbaranes')}}">
-                        <a href="{{ route('listaAlbaranes') }}">Albaranes</a>
-                    </li>
-
-                    <li a class="{{activeMenu('formularioCreateIncidencia')}}">
-                        <a href="{{route('formularioCreateIncidencia')}}">Incidencias</a>
-                    </li>
-                    @if(Auth::user()->type_worker === "admin")
-                        <li a class="{{activeMenu('formularioAñadir')}}">
-                            <a href="{{route('formularioAñadir')}}">Añadir máquina</a>
+                        <li class="{{activeMenu('listaAlbaranes')}}">
+                            <a href="{{ route('listaAlbaranes') }}">Albaranes</a>
                         </li>
-                        <li a class="{{activeMenu('formularioAñadirAlimento')}}">
-                            <a href="{{route('formularioAñadirAlimento')}}">Crear alimento</a>
-                        </li>                      
-                    @endif
+
+                        <li a class="{{activeMenu('formularioCreateIncidencia')}}">
+                            <a href="{{route('formularioCreateIncidencia')}}">Incidencias</a>
+                        </li>
+                        @if(Auth::user()->type_worker === "admin")
+                            <li a class="{{activeMenu('formularioAñadir')}}">
+                                <a href="{{route('formularioAñadir')}}">Añadir máquina</a>
+                            </li>
+                            <li a class="{{activeMenu('formularioAñadirAlimento')}}">
+                                <a href="{{route('formularioAñadirAlimento')}}">Crear alimento</a>
+                            </li>                      
+                        @endif
                     @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -100,7 +100,8 @@
 </header>
 <div class="container">
     @yield('contenido')
-    <footer class = "footer fixed-bottom container justify-content-center text-center">
+    <footer style="position:fixed; left:0px; bottom:0px; height:30px; width:100%;
+    ">
         <p class="text-center">Proyecto Final DAW. Hecho por David Jarreta Baita. &copy; {{date('Y')}}</p>
     </footer>
 </div>

@@ -25,5 +25,12 @@ class Albaran extends Model
 
     protected $table = 'albaranes';
 
+    protected $primaryKey = "Id_albaran";
+
+    public function nombre()
+    {
+        return $this->hasMany(User::class, 'id', 'Id_usuario');
+    }
+
 
 }

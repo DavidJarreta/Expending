@@ -9,56 +9,44 @@
     <table class="table">
         <thead>
         <tr>
-            <th>ID máquina</th>
-            <th>Estado</th>
+            <th>ID albarán</th>
+            <th>Estado máquina</th>
             <th>Fecha</th>
             <th>Dinero</th>
             <th>Contador</th>
+            <th>Nombre usuario</th>
+            <th>Id máquina</th>
+            <th>Alimento introducido</th>
+            <th>Cantidad</th>
         </tr>
         </thead>
         <tbody>
-            {{--@foreach ($albaranes as $albaran)
-                <tr> {{$albaran->id}} </tr>
-            @endforeach--}}
-            
-        {{--@foreach($messages as $message)
-            <tr>
-                <td>{{ $message->id }}</td>
-                @if($message->user_id)
+            @foreach ($albaranes as $albaran)
+                <tr>               
+                    <td>{{ $albaran->Id_albaran}}</td>
+                    <td>{{ $albaran->Estado_maquina}}</td>
+                    <td>{{ $albaran->Fecha}}</td>
+                    <td>{{ $albaran->Dinero_recaudado}}</td>
+                    <td>{{ $albaran->Contador}}</td>
+                    <td>{{ $albaran->nombre[0]->name }}</td>
+                    <td>{{ $albaran->Id_maquina}}</td>
+                    <td>{{ $albaran->alimento }}</td>    
+  
                     <td>
-                        <a href="{{ route('usuarios.show', $message->user_id) }}">
-                            {{ $message->user->name }}
-                        </a>
+                        <a class="btn btn-success btn-xs" href="{{route('formularioMeterAlimento', $albaran->Id_albaran)}}">Añadir alimento</a>
+
+                        @if(Auth::check() && Auth::user()->type_worker === "admin")
+                            <a class="btn btn-info btn-xs" href="{{route('editAlbaran')}}{{-- {{route('mensajes.edit',$message->id) --}}">Editar</a>
+
+                            <form  style="display:inline"  method="POST" action ="{{ route('deleteAlbaran', $albaran->Id_albaran) }}">
+                                @method('DELETE')
+                                @csrf
+                                <button class ="btn btn-danger btn-xs" type="submit">Eliminar</button>
+                            </form>
+                        @endif
                     </td>
-                    <td>{{ $message->user->email }}</td>
-                @else
-                    <td>{{ $message->nombre }}</td>
-                    <td>{{ $message->email }}</td>
-                @endif
-                <td>
-                    <a href="{{route('mensajes.show', $message->id)}}">{{ $message->mensaje}}</a>
-                </td>
-                <td>{{ $message->note ? $message->note->body : ''}}</td>
-                <td>{{ $message->tags->pluck('names')->implode(', ') }}</td>--}}
-
-                <td>
-                    <form  style="display:inline"  method="POST" action=" {{--{{route('mensajes.destroy',$message->id)--}}}}">
-                        {!! csrf_field()!!}
-                        <button class ="btn btn-info btn-xs"type="submit">Añadir alimento</button>
-                    </form>
-                    @if(Auth::check() && Auth::user()->type_worker === "admin")
-                    <a class="btn btn-info btn-xs" href="{{route('editAlbaran')}}{{-- {{route('mensajes.edit',$message->id) --}}">Editar</a>
-
-                    <form  style="display:inline"  method="POST" action=" {{--{{route('mensajes.destroy',$message->id)--}}}}">
-                        {!! csrf_field()!!}
-                        {!! method_field('DELETE')!!}
-                        <button class ="btn btn-danger btn-xs"type="submit">Eliminar</button>
-                    </form>
-                    @endif
-
-                </td>{{--
-            </tr>
-        @endforeach--}}
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @stop

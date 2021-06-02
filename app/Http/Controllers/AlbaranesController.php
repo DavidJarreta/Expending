@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Albaran;
+use App\Models\AlbaranAlimento;
 use App\Models\Maquina;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,9 +17,12 @@ class AlbaranesController extends Controller
      */
     public function index(Request $request)
     {
-        //$albaranes = Albaran::all();
-
-        return view('albaranes.index');
+        $albaranes = Albaran::all();
+        $maquinas = Maquina::all();
+        $alimentos = AlbaranAlimento::all();
+        $users = User::all();
+        
+        return view('albaranes.index', ['maquinas' => $maquinas , 'users' => $users, 'albaranes' => $albaranes, 'alimentos' => $alimentos]);
 
     }
 
@@ -63,9 +67,9 @@ class AlbaranesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        
     }
 
     /**
@@ -97,8 +101,13 @@ class AlbaranesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Albaran $albaran)
     {
-        //
+        
+        $albaran = Albaran::findOrFail($albaran->Id_albaran)->delete();
+        //$albaran = Albaran::where('Id_albaran', '=', $albaran->Id_albaran)->delete();
+        
+     
+        return redirect()->route('listaAlbaranes');
     }
 }

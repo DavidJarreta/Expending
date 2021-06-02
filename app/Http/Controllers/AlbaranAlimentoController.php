@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Albaran;
 use App\Models\AlbaranAlimento;
+use App\Models\Alimento;
 use Illuminate\Http\Request;
 
 class AlbaranAlimentoController extends Controller
@@ -16,7 +18,6 @@ class AlbaranAlimentoController extends Controller
     {
         //$albaranes = Albaran::all();
 
-        return view('albaranes.index');
 
     }
 
@@ -25,10 +26,12 @@ class AlbaranAlimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-       
-        return view('albaranes.create');
+    public function create(Albaran $id)
+    {   
+        $alimentos = Alimento::all();
+
+        return view ('alimentos.meterAlimento', ['alimentos' => $alimentos, 'albaran' => $id->Id_albaran]);
+
     }
 
     /**
@@ -40,16 +43,17 @@ class AlbaranAlimentoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id' => 'required',
-            'estado' => 'required',
-            'date' => 'required',
-            'addedFood' => 'required',
-            'amountAddedFood' => 'required',
-            'money' => 'required',
-            'accountant' => 'required',
+            'Id_alimento' => 'required',
+            'Cantidad' => 'required',
+            'albaran' => 'required',
         ]);
 
-        AlbaranAlimento::create($request->all());
+        AlbaranAlimento::create([
+            'Id_albaran' => $request->albaran,
+            'Id_alimento' => $request->Id_alimento,
+            'Cantidad' => $request->Cantidad,
+
+        ]);
 
         return redirect()->back();
     }
