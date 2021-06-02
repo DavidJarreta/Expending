@@ -16,8 +16,7 @@
             <th>Contador</th>
             <th>Nombre usuario</th>
             <th>Id máquina</th>
-            <th>Alimento introducido</th>
-            <th>Cantidad</th>
+            <th>Alimentos introducidos</th>
         </tr>
         </thead>
         <tbody>
@@ -30,8 +29,13 @@
                     <td>{{ $albaran->Contador}}</td>
                     <td>{{ $albaran->nombre[0]->name }}</td>
                     <td>{{ $albaran->Id_maquina}}</td>
-                    <td>{{ $albaran->alimento }}</td>    
-  
+                    <td>
+                        <ul>
+                            @foreach ($albaran->alimento as $alimento)
+                                <li>{{ $alimento->Nombre }}</li>
+                            @endforeach
+                        </ul>
+                    <td>                    
                     <td>
                         <a class="btn btn-success btn-xs" href="{{route('formularioMeterAlimento', $albaran->Id_albaran)}}">Añadir alimento</a>
 

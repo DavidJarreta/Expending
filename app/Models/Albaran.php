@@ -32,5 +32,10 @@ class Albaran extends Model
         return $this->hasMany(User::class, 'id', 'Id_usuario');
     }
 
+    public function alimento()
+    {
+        return $this->belongsToMany(Alimento::class, 'albaran_alimento', 'Id_albaran', 'Id_alimento');
+    }
+
 
 }

@@ -46,6 +46,7 @@ class AlbaranesController extends Controller
      */
     public function store(Request $request)
     {
+        $albaranes = Albaran::all();
         $request->validate([
             'Id_maquina' => 'required',
             'Id_usuario' => 'required',

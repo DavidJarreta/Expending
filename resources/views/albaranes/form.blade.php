@@ -32,7 +32,7 @@
                         <label for="Estado_maquina" class="col-md-4 col-form-label text-md-right">{{ __('Estado de la maquina') }}</label>
 
                         <div class="col-md-6">
-                            <input class="form-control" type="text" name="Estado_maquina" value="">
+                            <textarea class="form-control" name="Estado_maquina" id="" cols="5" rows="5"></textarea>
                         </div>
                     </div>
 

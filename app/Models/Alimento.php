@@ -16,4 +16,6 @@ class Alimento extends Model
 
     protected $table = 'alimentos';
 
+    protected $primaryKey = "Id_alimento";
+
 }

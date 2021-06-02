@@ -21,10 +21,9 @@ class AlbaranAlimento extends Model
 
     protected $table = 'albaran_alimento';
 
-    public function alimento()
-    {
-        return $this->hasOne(Alimento::class, 'Id_alimento', 'Id_alimento');
-    }
+    protected $primaryKey = "Id";
+
+
 
     
 

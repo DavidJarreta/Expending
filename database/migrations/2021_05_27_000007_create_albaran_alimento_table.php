@@ -16,9 +16,9 @@ class CreateAlbaranAlimentoTable extends Migration
         Schema::create('albaran_alimento', function (Blueprint $table) {
             $table->bigIncrements('Id');
             $table->biginteger('Id_albaran')->unsigned();
-            $table->foreign('Id_albaran')->references('Id_albaran')->on('albaranes');
+            $table->foreign('Id_albaran')->references('Id_albaran')->on('albaranes')->onDelete('cascade');
             $table->biginteger('Id_alimento')->unsigned();
-            $table->foreign('Id_alimento')->references('Id_alimento')->on('alimentos');
+            $table->foreign('Id_alimento')->references('Id_alimento')->on('alimentos')->onDelete('cascade');
             $table->integer('Cantidad');
             $table->timestamps();
         });
