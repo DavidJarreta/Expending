@@ -79,9 +79,11 @@ class AlbaranesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('albaranes.edit');
+        $maquinas = Maquina::all();
+        $users = User::all();
+        return view('albaranes.edit', ['maquinas' => $maquinas, 'users' => $users]);
     }
 
     /**

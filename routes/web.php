@@ -28,7 +28,13 @@ Route::post('/createAlbaran', [Controllers\AlbaranesController::class, 'store'] 
 
 Route::delete('/deleteAlbaran/{albaran}', [Controllers\AlbaranesController::class, 'destroy'] )->name('deleteAlbaran');
 
-Route::get('/editAlbaran', [Controllers\AlbaranesController::class, 'edit'] )->name('editAlbaran');
+
+
+Route::get('/editAlbaran/{id}', [Controllers\AlbaranesController::class, 'edit'] )->name('editAlbaran');
+
+Route::put('/formularioEditAlbaran{id}', [Controllers\AlbaranesController::class, 'update'] )->name('formularioEditAlbaran');
+
+
 
 Route::get('/formularioAñadir', [Controllers\MaquinasController::class, 'create'] )->name('formularioAñadir');
 

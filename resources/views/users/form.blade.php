@@ -1,4 +1,4 @@
-{!! csrf_field()!!}
+
 <p><label for="nombre">Nombre
         <input class="form-control" type="text" name="name" value="{{$user->name ?? old('name')}}">
         {!! $errors->first('name','<span class=error>:message</span>')!!}

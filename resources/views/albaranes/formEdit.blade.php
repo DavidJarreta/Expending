@@ -1,8 +1,9 @@
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h1>{{ __('Datos albarán') }}</h1></div><br>
+                <div class="card-header"><h1>{{ __('Editar albarán') }}</h1></div><br>
 
                 <div class="card-body">
                     <div class="form-group row">
@@ -10,8 +11,8 @@
                         <div class="col-md-6">
                             <select name="Id_maquina" id="Id_maquina" class="form-control @error('Id_maquina') is-invalid @enderror">
                                 @foreach ($maquinas as $maquina)
-                                    <option name = "Id_maquina" value="{{$maquina->Id_maquina}}">{{$maquina->Id_maquina}}-{{$maquina->Ubicacion}}</option>    
-                                @endforeach                     
+                                    <option name = "Id_maquina" value="{{$maquina->Id_maquina}}">{{$maquina->Id_maquina}}-{{$maquina->Ubicacion}}</option>
+                                @endforeach         
                             </select>    
                         </div>
                     </div>
@@ -22,7 +23,7 @@
                             <select name="Id_usuario" id="Id_usuario" class="form-control @error('Id_usuario') is-invalid @enderror">
                                 @foreach ($users as $user)
                                     <option name = "Id_usuario" value="{{$user->id}}">{{$user->id}}-{{$user->name}}</option>    
-                                @endforeach                         
+                                @endforeach                      
                             </select>    
                         </div>
                     </div>

@@ -40,7 +40,7 @@
                         <a class="btn btn-success btn-xs" href="{{route('formularioMeterAlimento', $albaran->Id_albaran)}}">Añadir alimento</a>
 
                         @if(Auth::check() && Auth::user()->type_worker === "admin")
-                            <a class="btn btn-info btn-xs" href="{{route('editAlbaran')}}{{-- {{route('mensajes.edit',$message->id) --}}">Editar</a>
+                            <a class="btn btn-info btn-xs" href="{{route('editAlbaran', $albaran->Id_albaran)}}">Editar</a>
 
                             <form  style="display:inline"  method="POST" action ="{{ route('deleteAlbaran', $albaran->Id_albaran) }}">
                                 @method('DELETE')

@@ -4,10 +4,10 @@
 
 @section('contenido')
     <form method="post" action="{{ route('createAlbaran') }}">
-
+        @csrf
         @include('albaranes.form')
         <input class="btn btn-primary" type="submit" value="Guardar datos">
-        <input class="btn btn-primary" type="submit" value="Volver">
+        <a href="listaAlbaranes" class="btn btn-primary">Volver</a>
     </form>
 
 @endsection
